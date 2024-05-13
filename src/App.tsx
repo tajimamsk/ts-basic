@@ -1,6 +1,11 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import Data from "./data.json";
+import TestComponent from "./TestComponent";
+
+// jsonの型推論
+type USERS = typeof Data;
 
 // const let
 const name = "hello"; //文字列リテラル
@@ -167,12 +172,15 @@ const funcGen4 = <T extends Props>(props: T) => {
   return { value: props.price };
 };
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header"></header>
+      <header className="App-header">
+        <TestComponent text="hello from app" />
+        <TestComponent text={1} />
+      </header>
     </div>
   );
-}
+};
 
 export default App;
